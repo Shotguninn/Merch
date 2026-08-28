@@ -20,7 +20,8 @@
             overflow-x: hidden;
         }
 
-        /* Scrolling message */
+        /* ===== MOVING TEXT ===== */
+
         .announcement {
             width: 100%;
             height: 35px;
@@ -30,27 +31,30 @@
         }
 
         .announcement-track {
-            display: inline-block;
-            padding-left: 100%;
-            animation: scroll 12s linear infinite;
+            display: flex;
+            width: max-content;
+            animation: marquee 14s linear infinite;
         }
 
         .announcement-text {
-            display: inline-block;
+            flex-shrink: 0;
+            padding-right: 50px;
             font-size: 14px;
             line-height: 35px;
             letter-spacing: 1px;
         }
 
-        @keyframes scroll {
-            0% {
+        @keyframes marquee {
+            from {
                 transform: translateX(0);
             }
 
-            100% {
-                transform: translateX(-100%);
+            to {
+                transform: translateX(-50%);
             }
         }
+
+        /* ===== HEADER ===== */
 
         header {
             padding: 30px 50px;
@@ -61,6 +65,8 @@
             font-size: 28px;
             letter-spacing: 2px;
         }
+
+        /* ===== SHOP ===== */
 
         .shop {
             max-width: 1100px;
@@ -81,12 +87,58 @@
             transform: translateY(-4px);
         }
 
-        .product img {
+        /* ===== IMAGE HOVER ===== */
+
+        .image-wrapper {
+            position: relative;
             width: 100%;
             height: 300px;
+        }
+
+        .image-wrapper img {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
             display: block;
             background: #111;
+        }
+
+        /* White corner lines */
+
+        .image-wrapper::before,
+        .image-wrapper::after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 0;
+            border: 2px solid transparent;
+            pointer-events: none;
+            transition: 0.25s ease;
+            z-index: 2;
+        }
+
+        .image-wrapper::before {
+            top: -5px;
+            left: -5px;
+        }
+
+        .image-wrapper::after {
+            bottom: -5px;
+            right: -5px;
+        }
+
+        .image-wrapper:hover::before {
+            width: 35px;
+            height: 35px;
+            border-top-color: white;
+            border-left-color: white;
+        }
+
+        .image-wrapper:hover::after {
+            width: 35px;
+            height: 35px;
+            border-bottom-color: white;
+            border-right-color: white;
         }
 
         .product h2 {
@@ -119,12 +171,34 @@
 
 <body>
 
-    <!-- Moving text -->
+    <!-- CONTINUOUS MOVING TEXT -->
     <div class="announcement">
         <div class="announcement-track">
+
             <span class="announcement-text">
-                dont buy this its a waste of money &nbsp;&nbsp;&nbsp;&nbsp;
+                dont buy this its a waste of money
             </span>
+
+            <span class="announcement-text">
+                dont buy this its a waste of money
+            </span>
+
+            <span class="announcement-text">
+                dont buy this its a waste of money
+            </span>
+
+            <span class="announcement-text">
+                dont buy this its a waste of money
+            </span>
+
+            <span class="announcement-text">
+                dont buy this its a waste of money
+            </span>
+
+            <span class="announcement-text">
+                dont buy this its a waste of money
+            </span>
+
         </div>
     </div>
 
@@ -136,7 +210,9 @@
 
         <div class="product">
 
-            <img src="signed-paper.jpg" alt="Signed Paper">
+            <div class="image-wrapper">
+                <img src="signed-paper.jpg" alt="Signed Paper">
+            </div>
 
             <h2>Signed Paper</h2>
 
