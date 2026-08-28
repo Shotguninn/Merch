@@ -19,7 +19,22 @@
             font-family: Arial, sans-serif;
             overflow-x: hidden;
         }
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
 
+.read-link {
+    color: #aaa;
+    text-decoration: none;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.read-link:hover {
+    color: white;
+}
         /* MOVING TEXT */
 
         .announcement {
@@ -349,8 +364,12 @@
     <!-- HEADER -->
 
     <header>
-
+<div class="header-left">
         <h1>merch</h1>
+    <a href="read.html" class="read-link">
+            pls read
+        </a>
+    </div>
 
         <button class="cart-button" id="cartButton" type="button">
 
