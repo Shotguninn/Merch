@@ -7,107 +7,6 @@
     <title>merch</title>
 
     <style>
-        /* ===== PAYMENT PANEL ===== */
-
-.payment-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.75);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 20;
-}
-
-.payment-overlay.open {
-    display: flex;
-}
-
-.payment-box {
-    width: 430px;
-    max-width: 90%;
-    background: #080808;
-    border: 1px solid #333;
-    padding: 30px;
-}
-
-.payment-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 25px;
-}
-
-.payment-header h2 {
-    font-size: 22px;
-}
-
-.close-payment {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 25px;
-    cursor: pointer;
-}
-
-.card-option {
-    border: 1px solid #444;
-    padding: 14px;
-    margin-bottom: 20px;
-    font-weight: bold;
-}
-
-.payment-label {
-    display: block;
-    margin-bottom: 7px;
-    font-size: 13px;
-    color: #aaa;
-}
-
-.payment-input {
-    width: 100%;
-    background: #111;
-    border: 1px solid #333;
-    color: white;
-    padding: 13px;
-    margin-bottom: 16px;
-    outline: none;
-}
-
-.payment-input:focus {
-    border-color: white;
-}
-
-.payment-row {
-    display: flex;
-    gap: 12px;
-}
-
-.payment-row > div {
-    flex: 1;
-}
-
-.pay-now {
-    width: 100%;
-    margin-top: 8px;
-    padding: 14px;
-    background: white;
-    color: black;
-    border: none;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.pay-now:hover {
-    background: #ddd;
-}
-
-.demo-note {
-    color: #666;
-    font-size: 11px;
-    margin-top: 12px;
-    text-align: center;
-}
         * {
             box-sizing: border-box;
             margin: 0;
@@ -121,7 +20,7 @@
             overflow-x: hidden;
         }
 
-        /* ===== MOVING TEXT ===== */
+        /* MOVING TEXT */
 
         .announcement {
             width: 100%;
@@ -155,7 +54,7 @@
             }
         }
 
-        /* ===== HEADER ===== */
+        /* HEADER */
 
         header {
             position: relative;
@@ -168,7 +67,7 @@
             letter-spacing: 2px;
         }
 
-        /* ===== CART BUTTON ===== */
+        /* CART BUTTON */
 
         .cart-button {
             position: absolute;
@@ -179,21 +78,22 @@
             border: none;
             color: white;
             cursor: pointer;
-            font-size: 24px;
             display: flex;
             align-items: center;
             gap: 7px;
+            padding: 5px;
         }
-        
+
         .cart-icon {
-    width: 24px;
-    height: 24px;
-    fill: none;
-    stroke: white;
-    stroke-width: 1.8;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
+            width: 25px;
+            height: 25px;
+            fill: none;
+            stroke: white;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            pointer-events: none;
+        }
 
         .cart-count {
             font-size: 13px;
@@ -206,9 +106,10 @@
             justify-content: center;
             align-items: center;
             font-weight: bold;
+            pointer-events: none;
         }
 
-        /* ===== SHOP ===== */
+        /* SHOP */
 
         .shop {
             max-width: 1100px;
@@ -229,7 +130,7 @@
             transform: translateY(-4px);
         }
 
-        /* ===== IMAGE ===== */
+        /* IMAGE */
 
         .image-wrapper {
             position: relative;
@@ -244,8 +145,6 @@
             display: block;
             background: #111;
         }
-
-        /* White corner lines */
 
         .image-wrapper::before,
         .image-wrapper::after {
@@ -309,107 +208,21 @@
             background: #ddd;
         }
 
-        /* ===== CART PANEL ===== */
+        /* CART BACKGROUND */
 
         .cart-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(0, 0, 0, 0.65);
+            background: rgba(0, 0, 0, 0.7);
             display: none;
-            z-index: 10;
+            z-index: 999;
         }
-<!-- PAYMENT -->
-<div class="payment-overlay" id="paymentOverlay" onclick="closePayment(event)">
 
-    <div class="payment-box" onclick="event.stopPropagation()">
-
-        <div class="payment-header">
-            <h2>Payment</h2>
-
-            <button class="close-payment" onclick="closePayment()">
-                ×
-            </button>
-        </div>
-
-        <div class="card-option">
-            💳 Mastercard
-        </div>
-
-        <label class="payment-label">
-            Card number
-        </label>
-
-        <input
-            class="payment-input"
-            type="text"
-            placeholder="0000 0000 0000 0000"
-            maxlength="19"
-        >
-
-        <div class="payment-row">
-
-            <div>
-                <label class="payment-label">
-                    Expiry date
-                </label>
-
-                <input
-                    class="payment-input"
-                    type="text"
-                    placeholder="MM / YY"
-                    maxlength="7"
-                >
-            </div>
-
-            <div>
-                <label class="payment-label">
-                    CVC
-                </label>
-
-                <input
-                    class="payment-input"
-                    type="text"
-                    placeholder="CVC"
-                    maxlength="4"
-                >
-            </div>
-
-        </div>
-
-        <label class="payment-label">
-            Phone number
-        </label>
-
-        <input
-            class="payment-input"
-            type="tel"
-            placeholder="+421 ..."
-        >
-
-        <label class="payment-label">
-            Email
-        </label>
-
-        <input
-            class="payment-input"
-            type="email"
-            placeholder="you@example.com"
-        >
-
-        <button class="pay-now">
-            PAY €0.10
-        </button>
-
-        <div class="demo-note">
-            Demo checkout — payments are not connected yet.
-        </div>
-
-    </div>
-
-</div>
         .cart-overlay.open {
             display: block;
         }
+
+        /* CART */
 
         .cart {
             position: absolute;
@@ -441,20 +254,9 @@
             background: none;
             border: none;
             color: white;
-            font-size: 25px;
+            font-size: 28px;
             cursor: pointer;
         }
-
-        function openPayment() {
-    document.getElementById("paymentOverlay").classList.add("open");
-}
-
-function closePayment(event) {
-    if (!event || event.target === document.getElementById("paymentOverlay")) {
-        document.getElementById("paymentOverlay").classList.remove("open");
-    }
-}
-        /* Product inside cart */
 
         .cart-item {
             display: flex;
@@ -483,7 +285,7 @@ function closePayment(event) {
             color: #aaa;
         }
 
-        /* Bottom */
+        /* CART BOTTOM */
 
         .cart-bottom {
             margin-top: auto;
@@ -517,12 +319,9 @@ function closePayment(event) {
 <body>
 
     <!-- MOVING TEXT -->
+
     <div class="announcement">
         <div class="announcement-track">
-
-            <span class="announcement-text">
-                dont buy this its a waste of money
-            </span>
 
             <span class="announcement-text">
                 dont buy this its a waste of money
@@ -548,21 +347,27 @@ function closePayment(event) {
     </div>
 
     <!-- HEADER -->
+
     <header>
+
         <h1>merch</h1>
 
-   <button class="cart-button" onclick="openCart()">
-    <svg class="cart-icon" viewBox="0 0 24 24">
-        <path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.6L21 8H6"/>
-        <circle cx="10" cy="20" r="1"/>
-        <circle cx="18" cy="20" r="1"/>
-    </svg>
+        <button class="cart-button" id="cartButton" type="button">
 
-    <span class="cart-count" id="cartCount">0</span>
-</button>
+            <svg class="cart-icon" viewBox="0 0 24 24">
+                <path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.6L21 8H6"></path>
+                <circle cx="10" cy="20" r="1"></circle>
+                <circle cx="18" cy="20" r="1"></circle>
+            </svg>
+
+            <span class="cart-count" id="cartCount">0</span>
+
+        </button>
+
     </header>
 
     <!-- PRODUCT -->
+
     <main class="shop">
 
         <div class="product">
@@ -575,7 +380,7 @@ function closePayment(event) {
 
             <div class="price">€0.10</div>
 
-            <button class="buy" onclick="addToCart()">
+            <button class="buy" id="buyButton" type="button">
                 BUY
             </button>
 
@@ -584,16 +389,19 @@ function closePayment(event) {
     </main>
 
     <!-- CART -->
-    <div class="cart-overlay" id="cartOverlay" onclick="closeCart(event)">
 
-        <div class="cart" onclick="event.stopPropagation()">
+    <div class="cart-overlay" id="cartOverlay">
+
+        <div class="cart">
 
             <div class="cart-header">
+
                 <h2>Your Cart</h2>
 
-                <button class="close-cart" onclick="closeCart()">
+                <button class="close-cart" id="closeCart" type="button">
                     ×
                 </button>
+
             </div>
 
             <div class="cart-item" id="cartItem" style="display: none;">
@@ -601,8 +409,11 @@ function closePayment(event) {
                 <img src="./Sticker.png" alt="Sticker w/kogee">
 
                 <div class="cart-item-info">
+
                     <h3>Sticker w/kogee</h3>
+
                     <p>€0.10</p>
+
                 </div>
 
             </div>
@@ -610,13 +421,18 @@ function closePayment(event) {
             <div class="cart-bottom">
 
                 <div class="cart-total">
+
                     <span>Total</span>
-                    <span id="cartTotal">€0.00</span>
+
+                    <span id="cartTotal">
+                        €0.00
+                    </span>
+
                 </div>
 
-               <button class="payment" onclick="openPayment()">
-    PAYMENT METHOD
-</button>
+                <button class="payment" type="button">
+                    PAYMENT METHOD
+                </button>
 
             </div>
 
@@ -624,36 +440,54 @@ function closePayment(event) {
 
     </div>
 
+    <!-- JAVASCRIPT -->
+
     <script>
-    let cartCount = 0;
 
-function addToCart() {
-    cartCount = 1;
+        let cartCount = 0;
 
-    document.getElementById("cartCount").textContent = cartCount;
-    document.getElementById("cartItem").style.display = "flex";
-    document.getElementById("cartTotal").textContent = "€0.10";
-}
+        const cartButton = document.getElementById("cartButton");
+        const buyButton = document.getElementById("buyButton");
+        const cartOverlay = document.getElementById("cartOverlay");
+        const closeCartButton = document.getElementById("closeCart");
+        const cartCountDisplay = document.getElementById("cartCount");
+        const cartItem = document.getElementById("cartItem");
+        const cartTotal = document.getElementById("cartTotal");
 
-function openCart() {
-    document.getElementById("cartOverlay").classList.add("open");
-}
+        buyButton.addEventListener("click", function() {
 
-function closeCart(event) {
-    if (!event || event.target === document.getElementById("cartOverlay")) {
-        document.getElementById("cartOverlay").classList.remove("open");
-    }
-}
+            cartCount = 1;
 
-function openPayment() {
-    document.getElementById("paymentOverlay").classList.add("open");
-}
+            cartCountDisplay.textContent = "1";
 
-function closePayment(event) {
-    if (!event || event.target === document.getElementById("paymentOverlay")) {
-        document.getElementById("paymentOverlay").classList.remove("open");
-    }
-}
+            cartItem.style.display = "flex";
+
+            cartTotal.textContent = "€0.10";
+
+        });
+
+        cartButton.addEventListener("click", function() {
+
+            cartOverlay.classList.add("open");
+
+        });
+
+        closeCartButton.addEventListener("click", function() {
+
+            cartOverlay.classList.remove("open");
+
+        });
+
+        cartOverlay.addEventListener("click", function(event) {
+
+            if (event.target === cartOverlay) {
+
+                cartOverlay.classList.remove("open");
+
+            }
+
+        });
+
     </script>
 
 </body>
