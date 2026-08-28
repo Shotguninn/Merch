@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>svgMerch</title>
+    <title>merch</title>
 
     <style>
         * {
@@ -17,6 +17,39 @@
             background: #000;
             color: white;
             font-family: Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Scrolling message */
+        .announcement {
+            width: 100%;
+            height: 35px;
+            overflow: hidden;
+            border-bottom: 1px solid #222;
+            white-space: nowrap;
+        }
+
+        .announcement-track {
+            display: inline-block;
+            padding-left: 100%;
+            animation: scroll 12s linear infinite;
+        }
+
+        .announcement-text {
+            display: inline-block;
+            font-size: 14px;
+            line-height: 35px;
+            letter-spacing: 1px;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
         }
 
         header {
@@ -86,26 +119,34 @@
 
 <body>
 
-<header>
-    <h1>svgMerch</h1>
-</header>
-
-<main class="shop">
-
-    <div class="product">
-
-        <!-- Your reference picture goes here -->
-        <img src="signed-paper.jpg" alt="Signed Paper">
-
-        <h2>Signed Paper</h2>
-
-        <div class="price">€0.10</div>
-
-        <button class="buy">BUY</button>
-
+    <!-- Moving text -->
+    <div class="announcement">
+        <div class="announcement-track">
+            <span class="announcement-text">
+                dont buy this its a waste of money &nbsp;&nbsp;&nbsp;&nbsp;
+            </span>
+        </div>
     </div>
 
-</main>
+    <header>
+        <h1>merch</h1>
+    </header>
+
+    <main class="shop">
+
+        <div class="product">
+
+            <img src="signed-paper.jpg" alt="Signed Paper">
+
+            <h2>Signed Paper</h2>
+
+            <div class="price">€0.10</div>
+
+            <button class="buy">BUY</button>
+
+        </div>
+
+    </main>
 
 </body>
 </html>
