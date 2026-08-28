@@ -625,27 +625,35 @@ function closePayment(event) {
     </div>
 
     <script>
-        let cartCount = 0;
+    let cartCount = 0;
 
-        function addToCart() {
-            cartCount = 1;
+function addToCart() {
+    cartCount = 1;
 
-            document.getElementById("cartCount").textContent = cartCount;
+    document.getElementById("cartCount").textContent = cartCount;
+    document.getElementById("cartItem").style.display = "flex";
+    document.getElementById("cartTotal").textContent = "€0.10";
+}
 
-            document.getElementById("cartItem").style.display = "flex";
+function openCart() {
+    document.getElementById("cartOverlay").classList.add("open");
+}
 
-            document.getElementById("cartTotal").textContent = "€0.10";
-        }
+function closeCart(event) {
+    if (!event || event.target === document.getElementById("cartOverlay")) {
+        document.getElementById("cartOverlay").classList.remove("open");
+    }
+}
 
-        function openCart() {
-            document.getElementById("cartOverlay").classList.add("open");
-        }
+function openPayment() {
+    document.getElementById("paymentOverlay").classList.add("open");
+}
 
-        function closeCart(event) {
-            if (!event || event.target === document.getElementById("cartOverlay")) {
-                document.getElementById("cartOverlay").classList.remove("open");
-            }
-        }
+function closePayment(event) {
+    if (!event || event.target === document.getElementById("paymentOverlay")) {
+        document.getElementById("paymentOverlay").classList.remove("open");
+    }
+}
     </script>
 
 </body>
