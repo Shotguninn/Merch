@@ -318,7 +318,95 @@
             display: none;
             z-index: 10;
         }
+<!-- PAYMENT -->
+<div class="payment-overlay" id="paymentOverlay" onclick="closePayment(event)">
 
+    <div class="payment-box" onclick="event.stopPropagation()">
+
+        <div class="payment-header">
+            <h2>Payment</h2>
+
+            <button class="close-payment" onclick="closePayment()">
+                ×
+            </button>
+        </div>
+
+        <div class="card-option">
+            💳 Mastercard
+        </div>
+
+        <label class="payment-label">
+            Card number
+        </label>
+
+        <input
+            class="payment-input"
+            type="text"
+            placeholder="0000 0000 0000 0000"
+            maxlength="19"
+        >
+
+        <div class="payment-row">
+
+            <div>
+                <label class="payment-label">
+                    Expiry date
+                </label>
+
+                <input
+                    class="payment-input"
+                    type="text"
+                    placeholder="MM / YY"
+                    maxlength="7"
+                >
+            </div>
+
+            <div>
+                <label class="payment-label">
+                    CVC
+                </label>
+
+                <input
+                    class="payment-input"
+                    type="text"
+                    placeholder="CVC"
+                    maxlength="4"
+                >
+            </div>
+
+        </div>
+
+        <label class="payment-label">
+            Phone number
+        </label>
+
+        <input
+            class="payment-input"
+            type="tel"
+            placeholder="+421 ..."
+        >
+
+        <label class="payment-label">
+            Email
+        </label>
+
+        <input
+            class="payment-input"
+            type="email"
+            placeholder="you@example.com"
+        >
+
+        <button class="pay-now">
+            PAY €0.10
+        </button>
+
+        <div class="demo-note">
+            Demo checkout — payments are not connected yet.
+        </div>
+
+    </div>
+
+</div>
         .cart-overlay.open {
             display: block;
         }
@@ -357,6 +445,15 @@
             cursor: pointer;
         }
 
+        function openPayment() {
+    document.getElementById("paymentOverlay").classList.add("open");
+}
+
+function closePayment(event) {
+    if (!event || event.target === document.getElementById("paymentOverlay")) {
+        document.getElementById("paymentOverlay").classList.remove("open");
+    }
+}
         /* Product inside cart */
 
         .cart-item {
