@@ -591,7 +591,20 @@ const cartTotal = document.getElementById("cartTotal");
 
 const stickerCartItem = document.getElementById("stickerCartItem");
 const shirtCartItem = document.getElementById("shirtCartItem");
+const removeSticker = document.getElementById("removeSticker");
+const removeShirt = document.getElementById("removeShirt");
 
+removeSticker.addEventListener("click", function() {
+    stickerCount = 0;
+    stickerQuantity.value = "1";
+    updateCart();
+});
+
+removeShirt.addEventListener("click", function() {
+    shirtCount = 0;
+    shirtQuantity.value = "1";
+    updateCart();
+});
 const stickerQuantity = document.getElementById("stickerQuantity");
 const shirtQuantity = document.getElementById("shirtQuantity");
 
