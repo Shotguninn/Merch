@@ -499,69 +499,39 @@
 
         </div>
 
-        <div class="cart-item" id="cartItem" style="display: none;">
-let stickerCount = 0;
-let shirtCount = 0;
+        <div class="cart-item" id="stickerCartItem" style="display: none;">
+    <img src="./Sticker.png" alt="Sticker w/kogee">
 
-const shirtPrice = 0.00;
+    <div class="cart-item-info">
+        <h3>Sticker w/kogee</h3>
+        <p>€0.10 each</p>
 
-const cartButton = document.getElementById("cartButton");
-const buyButton = document.getElementById("buyButton");
-const shirtBuyButton = document.getElementById("shirtBuyButton");
+        <label for="stickerQuantity">Quantity:</label>
+        <select id="stickerQuantity">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+    </div>
+</div>
 
-const cartOverlay = document.getElementById("cartOverlay");
-const closeCartButton = document.getElementById("closeCart");
+<div class="cart-item" id="shirtCartItem" style="display: none;">
+    <img src="./shirt.png" alt="shotgun shirt">
 
-const cartCountDisplay = document.getElementById("cartCount");
-const cartTotal = document.getElementById("cartTotal");
+    <div class="cart-item-info">
+        <h3>shotgun shirt</h3>
+        <p>€0.00 each</p>
 
-const stickerCartItem = document.getElementById("stickerCartItem");
-const shirtCartItem = document.getElementById("shirtCartItem");
-
-const stickerQuantity = document.getElementById("stickerQuantity");
-const shirtQuantity = document.getElementById("shirtQuantity");
-
-function updateCart() {
-    stickerCartItem.style.display = stickerCount > 0 ? "flex" : "none";
-    shirtCartItem.style.display = shirtCount > 0 ? "flex" : "none";
-
-    const totalItems = stickerCount + shirtCount;
-
-    cartCountDisplay.textContent = totalItems;
-
-    const total =
-        stickerCount * Number(stickerQuantity.value) * 0.10 +
-        shirtCount * Number(shirtQuantity.value) * shirtPrice;
-
-    cartTotal.textContent = "€" + total.toFixed(2);
-}
-
-buyButton.addEventListener("click", function() {
-    stickerCount = 1;
-    updateCart();
-});
-
-shirtBuyButton.addEventListener("click", function() {
-    shirtCount = 1;
-    updateCart();
-});
-
-stickerQuantity.addEventListener("change", updateCart);
-shirtQuantity.addEventListener("change", updateCart);
-
-cartButton.addEventListener("click", function() {
-    cartOverlay.classList.add("open");
-});
-
-closeCartButton.addEventListener("click", function() {
-    cartOverlay.classList.remove("open");
-});
-
-cartOverlay.addEventListener("click", function(event) {
-    if (event.target === cartOverlay) {
-        cartOverlay.classList.remove("open");
-    }
-});
+        <label for="shirtQuantity">Quantity:</label>
+        <select id="shirtQuantity">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+    </div>
+</div>
             <img src="./Sticker.png" alt="Sticker w/kogee">
 
            <div class="cart-item-info">
