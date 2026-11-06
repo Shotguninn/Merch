@@ -455,7 +455,68 @@
         </div>
 
         <div class="cart-item" id="cartItem" style="display: none;">
+let stickerCount = 0;
+let shirtCount = 0;
 
+const shirtPrice = 0.00;
+
+const cartButton = document.getElementById("cartButton");
+const buyButton = document.getElementById("buyButton");
+const shirtBuyButton = document.getElementById("shirtBuyButton");
+
+const cartOverlay = document.getElementById("cartOverlay");
+const closeCartButton = document.getElementById("closeCart");
+
+const cartCountDisplay = document.getElementById("cartCount");
+const cartTotal = document.getElementById("cartTotal");
+
+const stickerCartItem = document.getElementById("stickerCartItem");
+const shirtCartItem = document.getElementById("shirtCartItem");
+
+const stickerQuantity = document.getElementById("stickerQuantity");
+const shirtQuantity = document.getElementById("shirtQuantity");
+
+function updateCart() {
+    stickerCartItem.style.display = stickerCount > 0 ? "flex" : "none";
+    shirtCartItem.style.display = shirtCount > 0 ? "flex" : "none";
+
+    const totalItems = stickerCount + shirtCount;
+
+    cartCountDisplay.textContent = totalItems;
+
+    const total =
+        stickerCount * Number(stickerQuantity.value) * 0.10 +
+        shirtCount * Number(shirtQuantity.value) * shirtPrice;
+
+    cartTotal.textContent = "€" + total.toFixed(2);
+}
+
+buyButton.addEventListener("click", function() {
+    stickerCount = 1;
+    updateCart();
+});
+
+shirtBuyButton.addEventListener("click", function() {
+    shirtCount = 1;
+    updateCart();
+});
+
+stickerQuantity.addEventListener("change", updateCart);
+shirtQuantity.addEventListener("change", updateCart);
+
+cartButton.addEventListener("click", function() {
+    cartOverlay.classList.add("open");
+});
+
+closeCartButton.addEventListener("click", function() {
+    cartOverlay.classList.remove("open");
+});
+
+cartOverlay.addEventListener("click", function(event) {
+    if (event.target === cartOverlay) {
+        cartOverlay.classList.remove("open");
+    }
+});
             <img src="./Sticker.png" alt="Sticker w/kogee">
 
            <div class="cart-item-info">
