@@ -624,66 +624,70 @@ cartOverlay.addEventListener("click", function(event) {
     </div>
 
 </div>
-    <!-- JAVASCRIPT -->
+  <!-- JAVASCRIPT -->
 
-    <script>
-        const quantity = document.getElementById("quantity");
+<script>
+let stickerCount = 0;
+let shirtCount = 0;
 
-quantity.addEventListener("change", function() {
+const shirtPrice = 0.00;
 
-    const amount = Number(quantity.value);
-    const total = amount * 0.10;
+const cartButton = document.getElementById("cartButton");
+const buyButton = document.getElementById("buyButton");
+const shirtBuyButton = document.getElementById("shirtBuyButton");
 
-    document.getElementById("cartTotal").textContent =
-        "€" + total.toFixed(2);
+const cartOverlay = document.getElementById("cartOverlay");
+const closeCartButton = document.getElementById("closeCart");
 
+const cartCountDisplay = document.getElementById("cartCount");
+const cartTotal = document.getElementById("cartTotal");
+
+const stickerCartItem = document.getElementById("stickerCartItem");
+const shirtCartItem = document.getElementById("shirtCartItem");
+
+const stickerQuantity = document.getElementById("stickerQuantity");
+const shirtQuantity = document.getElementById("shirtQuantity");
+
+function updateCart() {
+    stickerCartItem.style.display = stickerCount > 0 ? "flex" : "none";
+    shirtCartItem.style.display = shirtCount > 0 ? "flex" : "none";
+
+    cartCountDisplay.textContent = stickerCount + shirtCount;
+
+    const total =
+        stickerCount * Number(stickerQuantity.value) * 0.10 +
+        shirtCount * Number(shirtQuantity.value) * shirtPrice;
+
+    cartTotal.textContent = "€" + total.toFixed(2);
+}
+
+buyButton.addEventListener("click", function() {
+    stickerCount = 1;
+    updateCart();
 });
 
-        let cartCount = 0;
+shirtBuyButton.addEventListener("click", function() {
+    shirtCount = 1;
+    updateCart();
+});
 
-        const cartButton = document.getElementById("cartButton");
-        const buyButton = document.getElementById("buyButton");
-        const cartOverlay = document.getElementById("cartOverlay");
-        const closeCartButton = document.getElementById("closeCart");
-        const cartCountDisplay = document.getElementById("cartCount");
-        const cartItem = document.getElementById("cartItem");
-        const cartTotal = document.getElementById("cartTotal");
+stickerQuantity.addEventListener("change", updateCart);
+shirtQuantity.addEventListener("change", updateCart);
 
-        buyButton.addEventListener("click", function() {
+cartButton.addEventListener("click", function() {
+    cartOverlay.classList.add("open");
+});
 
-            cartCount = 1;
+closeCartButton.addEventListener("click", function() {
+    cartOverlay.classList.remove("open");
+});
 
-            cartCountDisplay.textContent = "1";
-
-            cartItem.style.display = "flex";
-
-            cartTotal.textContent = "€0.10";
-
-        });
-
-        cartButton.addEventListener("click", function() {
-
-            cartOverlay.classList.add("open");
-
-        });
-
-        closeCartButton.addEventListener("click", function() {
-
-            cartOverlay.classList.remove("open");
-
-        });
-
-        cartOverlay.addEventListener("click", function(event) {
-
-            if (event.target === cartOverlay) {
-
-                cartOverlay.classList.remove("open");
-
-            }
-
-        });
-
-    </script>
+cartOverlay.addEventListener("click", function(event) {
+    if (event.target === cartOverlay) {
+        cartOverlay.classList.remove("open");
+    }
+});
+</script>
 
 </body>
 </html>
