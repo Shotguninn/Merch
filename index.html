@@ -483,133 +483,81 @@
 </div>
  
 
-    <!-- CART -->
+    
+<!-- CART -->
 
-    <div class="cart-overlay" id="cartOverlay">
+<div class="cart-overlay" id="cartOverlay">
 
     <div class="cart">
 
         <div class="cart-header">
-
             <h2>Your Cart</h2>
-
-            <button class="close-cart" id="closeCart" type="button">
-                ×
-            </button>
-
+            <button class="close-cart" id="closeCart" type="button">×</button>
         </div>
 
         <div class="cart-item" id="stickerCartItem" style="display: none;">
-    <img src="./Sticker.png" alt="Sticker w/kogee">
-
-    <div class="cart-item-info">
-        <h3>Sticker w/kogee</h3>
-        <p>€0.10 each</p>
-
-        <label for="stickerQuantity">Quantity:</label>
-        <select id="stickerQuantity">
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-    <option value="5">5</option>
-    <option value="6">6</option>
-    <option value="7">7</option>
-    <option value="8">8</option>
-    <option value="9">9</option>
-    <option value="10">10</option>
-    <option value="11">11</option>
-    <option value="12">12</option>
-    <option value="13">13</option>
-    <option value="14">14</option>
-    <option value="15">15</option>
-    <option value="16">16</option>
-    <option value="17">17</option>
-    <option value="18">18</option>
-    <option value="19">19</option>
-    <option value="20">20</option>
-</select>
-    </div>
-</div>
-
-<div class="cart-item" id="shirtCartItem" style="display: none;">
-    <img src="./shirt.png" alt="shotgun shirt">
-
-    <div class="cart-item-info">
-        <h3>shotgun shirt</h3>
-        <p>€0.00 each</p>
-
-        <label for="shirtQuantity">Quantity:</label>
-        <select id="shirtQuantity">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-        </select>
-    </div>
-</div>
             <img src="./Sticker.png" alt="Sticker w/kogee">
 
-           <div class="cart-item-info">
+            <div class="cart-item-info">
+                <h3>Sticker w/kogee</h3>
+                <p>€0.10 each</p>
 
-    <h3>Sticker w/kogee</h3>
+                <label for="stickerQuantity">Quantity:</label>
+                <select id="stickerQuantity">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                </select>
+            </div>
+        </div>
 
-    <p>€0.10 each</p>
+        <div class="cart-item" id="shirtCartItem" style="display: none;">
+            <img src="./shirt.png" alt="shotgun shirt">
 
-    <div class="quantity-row">
+            <div class="cart-item-info">
+                <h3>shotgun shirt</h3>
+                <p>€0.00 each</p>
 
-        <label for="quantity">Quantity:</label>
-
-        <select id="quantity">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-            <option value="11">11</option>
-            <option value="12">12</option>
-            <option value="13">13</option>
-            <option value="14">14</option>
-            <option value="15">15</option>
-            <option value="16">16</option>
-            <option value="17">17</option>
-            <option value="18">18</option>
-            <option value="19">19</option>
-            <option value="20">20</option>
-        </select>
-
-    </div>
-
-</div>
-
+                <label for="shirtQuantity">Quantity:</label>
+                <select id="shirtQuantity">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </div>
         </div>
 
         <div class="cart-bottom">
-
             <div class="cart-total">
-
                 <span>Total</span>
-
-                <span id="cartTotal">
-                    €0.00
-                </span>
-
+                <span id="cartTotal">€0.00</span>
             </div>
 
             <button class="payment" type="button">
                 PAYMENT METHOD
             </button>
-
         </div>
 
     </div>
-
 </div>
-  <!-- JAVASCRIPT -->
+
 
 <script>
 let stickerCount = 0;
