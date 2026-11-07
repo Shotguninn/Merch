@@ -655,17 +655,18 @@
 </div>
 
 
+
 <script>
 let stickerCount = 0;
 let noKogeeCount = 0;
 let shirtCount = 0;
 
 const noKogeePrice = 0.10;
-
 const shirtPrice = 25.00;
 
 const cartButton = document.getElementById("cartButton");
 const buyButton = document.getElementById("buyButton");
+const buyNoKogeeButton = document.getElementById("buyNoKogeeButton");
 const shirtBuyButton = document.getElementById("shirtBuyButton");
 
 const cartOverlay = document.getElementById("cartOverlay");
@@ -675,32 +676,27 @@ const cartCountDisplay = document.getElementById("cartCount");
 const cartTotal = document.getElementById("cartTotal");
 
 const stickerCartItem = document.getElementById("stickerCartItem");
+const noKogeeCartItem = document.getElementById("noKogeeCartItem");
 const shirtCartItem = document.getElementById("shirtCartItem");
-const removeSticker = document.getElementById("removeSticker");
-const removeShirt = document.getElementById("removeShirt");
 
-removeSticker.addEventListener("click", function() {
-    stickerCount = 0;
-    stickerQuantity.value = "1";
-    updateCart();
-});
-
-removeShirt.addEventListener("click", function() {
-    shirtCount = 0;
-    shirtQuantity.value = "1";
-    updateCart();
-});
 const stickerQuantity = document.getElementById("stickerQuantity");
+const noKogeeQuantity = document.getElementById("noKogeeQuantity");
 const shirtQuantity = document.getElementById("shirtQuantity");
+
+const removeSticker = document.getElementById("removeSticker");
+const removeNoKogee = document.getElementById("removeNoKogee");
+const removeShirt = document.getElementById("removeShirt");
 
 function updateCart() {
     stickerCartItem.style.display = stickerCount > 0 ? "flex" : "none";
+    noKogeeCartItem.style.display = noKogeeCount > 0 ? "flex" : "none";
     shirtCartItem.style.display = shirtCount > 0 ? "flex" : "none";
 
-    cartCountDisplay.textContent = stickerCount + shirtCount;
+    cartCountDisplay.textContent = stickerCount + noKogeeCount + shirtCount;
 
     const total =
         stickerCount * Number(stickerQuantity.value) * 0.10 +
+        noKogeeCount * Number(noKogeeQuantity.value) * noKogeePrice +
         shirtCount * Number(shirtQuantity.value) * shirtPrice;
 
     cartTotal.textContent = "€" + total.toFixed(2);
@@ -711,13 +707,37 @@ buyButton.addEventListener("click", function() {
     updateCart();
 });
 
+buyNoKogeeButton.addEventListener("click", function() {
+    noKogeeCount = 1;
+    updateCart();
+});
+
 shirtBuyButton.addEventListener("click", function() {
     shirtCount = 1;
     updateCart();
 });
 
 stickerQuantity.addEventListener("change", updateCart);
+noKogeeQuantity.addEventListener("change", updateCart);
 shirtQuantity.addEventListener("change", updateCart);
+
+removeSticker.addEventListener("click", function() {
+    stickerCount = 0;
+    stickerQuantity.value = "1";
+    updateCart();
+});
+
+removeNoKogee.addEventListener("click", function() {
+    noKogeeCount = 0;
+    noKogeeQuantity.value = "1";
+    updateCart();
+});
+
+removeShirt.addEventListener("click", function() {
+    shirtCount = 0;
+    shirtQuantity.value = "1";
+    updateCart();
+});
 
 cartButton.addEventListener("click", function() {
     cartOverlay.classList.add("open");
@@ -732,31 +752,8 @@ cartOverlay.addEventListener("click", function(event) {
         cartOverlay.classList.remove("open");
     }
 });
-    const filterButtons = document.querySelectorAll(".filter-button");
-const products = document.querySelectorAll(".product");
-
-filterButtons.forEach(button => {
-    button.addEventListener("click", function() {
-
-        const filter = this.dataset.filter;
-
-        filterButtons.forEach(btn => {
-            btn.classList.remove("active");
-        });
-
-        this.classList.add("active");
-
-        products.forEach(product => {
-            if (filter === "all" || product.dataset.category === filter) {
-                product.style.display = "block";
-            } else {
-                product.style.display = "none";
-            }
-        });
-
-    });
-});
 </script>
+
 
 </body>
 </html>
