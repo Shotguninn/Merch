@@ -676,6 +676,30 @@ cartOverlay.addEventListener("click", function(event) {
         cartOverlay.classList.remove("open");
     }
 });
+    const filterButtons = document.querySelectorAll(".filter-button");
+const products = document.querySelectorAll(".product");
+
+filterButtons.forEach(button => {
+    button.addEventListener("click", function() {
+
+        const filter = this.dataset.filter;
+
+        filterButtons.forEach(btn => {
+            btn.classList.remove("active");
+        });
+
+        this.classList.add("active");
+
+        products.forEach(product => {
+            if (filter === "all" || product.dataset.category === filter) {
+                product.style.display = "block";
+            } else {
+                product.style.display = "none";
+            }
+        });
+
+    });
+});
 </script>
 
 </body>
