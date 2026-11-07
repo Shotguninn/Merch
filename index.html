@@ -89,13 +89,23 @@
     position: relative;
     overflow: hidden;
     border-bottom: 1px solid #222;
+
     background: transparent;
-background-image: url("./background2.jpeg");
+    background-image: url("./background2.jpeg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-}
 
+    -webkit-mask-image:
+        linear-gradient(to bottom, transparent 0%, black 15%, black 75%, transparent 100%),
+        linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
+
+    -webkit-mask-composite: source-in;
+
+    mask-image:
+        linear-gradient(to bottom, transparent 0%, black 15%, black 75%, transparent 100%),
+        linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
+}
 .hero h1 {
     font-size: clamp(45px, 10vw, 130px);
     font-weight: 900;
